@@ -1,0 +1,85 @@
+body{
+  width:100vw;
+  height:100vh;
+}
+.container{
+  width:inherit !important;
+  padding:0 !important; 
+  height:50px !important;
+}
+.navbar {
+    border-radius: 0px !important;
+    background: #212121 !important;
+}
+.fa-bars{
+  color:white;
+  font-size:30px;
+  line-height:50px;
+  padding-left:10px;
+}
+
+.channel-name:hover 
+{
+    background: #214444;
+}
+
+
+#sidebar-button{
+    float:left;
+}
+
+input[type=checkbox] {
+   display: none;
+}
+
+.channel-name {
+    color:white;
+    font-size: 20px;
+    width:100%;
+}
+
+.channel-name-text
+{
+    margin:0 auto;
+    width: 60%; 
+    height: 50px;
+    line-height: 50px;
+}
+
+input:checked ~ .content-container { 
+    left: 0;
+}
+
+input:checked ~ .sidebar-button {
+    left: 0;
+}
+
+.sidebar {
+    background-color: black;
+    width: 250px;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    bottom: 0;
+}
+
+.sidebar h1 {
+    color: white;
+    width:60%;
+    margin: 10px auto;
+}
+
+
+.content-container {
+    background-color: #333;
+    position: absolute;
+    top: 50px;
+    left: 250px;
+    right: 0;
+    bottom: 0;
+    
+    -moz-transition: left 0.5s ease;
+    transition: left 0.5s ease;
+}
+
+
