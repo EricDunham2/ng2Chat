@@ -1,28 +1,81 @@
-<head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"> </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="chat.component.css">
-</head>
-<body> 
 <div class="container">
-  <nav class="navbar navbar-inverse bg-faded">
-    <label id="sidebar-button" for="slide-sidebar"><span class="fa fa-bars" ></span></label>
-    <a class="navbar-brand" href="#">Noch</a>
-  </nav>
+    <nav class="navbar navbar-inverse bg-faded">
+        <label id="sidebar-button" for="slide-sidebar"><span class="fa fa-bars" ></span></label>
+        <button id="signup" class="nav-button"><span class="fa fa-user"></span> </button>
+        <button id="code" class="nav-button"><span class="fa fa-code"></span></button>
+        <label id="notifications" class="nav-button" for="openContent"><span class="fa fa-envelope"></span><div *ngIf="notifications.length != 0" id="circle"></div>
+            <input type="checkbox" id="openContent" style="display:none;" />
+            <div id="notifaction-board">   
+                <div *ngFor="let noti of notifications" (click)="setNotification(noti);acceptInvite()" class="notification-item">Invite to {{noti.groupname}}</div>    
+            </div>
+        </label>
+    </nav>
 </div>
-  <input id="slide-sidebar" type="checkbox" role="button"/>
-  <div class="sidebar">
-    <h1>Channels</h1>
-    <div class="channels-container">
-        <div class="channel-name">
-            <div class="channel-name-text">Channel Name</div>
-        </div>
-        <div class="channel-name">
-            <div class="channel-name-text">Channel Name</div>
+<input id="slide-sidebar" type="checkbox" role="button" />
+<div class="sidebar">
+    <div class="button-group" *ngFor="let group of globalGroups">
+        <button class="group-dropdown" data-toggle="collapse" [attr.data-target]="'#' + group.Groupname.split(' ').join('__')">
+            <span>{{group.Groupname}}</span>
+            <div (click)="setGroup(group); groupSettings.show()" class="fa fa-cog"></div>
+        </button>
+        <div [id]="group.Groupname.split(' ').join('__')" class="collapse">
+            <button *ngFor="let channel of group.Channels" (click)="getChannelMessages(channel.chnnlID)" class="channel-button">{{channel.Channelname}}</button>
         </div>
     </div>
-  </div>
-  <div class="content-container"><h1>Content</h1></div>
-</body> 
+    <button class="group-dropdown fa fa-plus" data-toggle="collapse" data-target="#newGroup"></button>
+    <div id="newGroup" class="collapse">
+        <div class="input-group groupInputContainer">
+            <div class="input-group-addon input-label">Name</div>
+            <input type="text" [(ngModel)]="newGrpName" class="form-control" id="newGroupName" placeholder="Group name">
+        </div>
+        <button class="channel-button" (click)="createGroup()" id="createGrp">Create</button>
+    </div>
+</div>
+<div class="content-container">
+    <div class="message-pane">
+        <div class="message" *ngFor="let message of messages">
+            <div class="message-information">
+                <img class="portrait" src="http://surfpk.com/wp-content/uploads/2015/09/facebook-profile.jpg">
+                <div class="username">{{message.username}}</div>
+                <div class="timestamp">{{message.Timestamp}}</div>
+            </div>
+            <div class="message-contents">{{message.Text}}</div>
+        </div>
+    </div>
+    <div class="bottom-bar">
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <input type="text" (keyup.enter)="send()" id="newGroupInput" [(ngModel)]="msgContent" class="form-control" id="messageSendBox" placeholder="Talk and stuff...">
+            <div class="input-group-addon">Send</div>
+        </div>
+    </div>
+</div>
+
+<div bsModal #groupSettings="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Group Settings</h4>
+                <button type="button" class="close pull-right" (click)="groupSettings.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-container">
+                    <div class="modal-label">Add Users:</div>
+                    <input type="text" id="addUserToGroup" [(ngModel)]="inviteUsr" class="form-control" placeholder="Username...">
+                </div>
+                <div class="modal-container">
+                    <div class="modal-label">Rename Group:</div>
+                    <input type="text" id="changeGroupName" [(ngModel)]="newGroupName" class="form-control" placeholder="New name...">
+                </div>
+                <div class="modal-container">
+                    <div class="modal-label">Add Channel:</div>
+                    <input type="text" id="newChannelName" [(ngModel)]="newChannel" class="form-control" placeholder="New name...">
+                </div>
+                <div class="col-md-15">
+                    <button class="submit-buttons" style="float:left;">Delete</button>
+                    <button class="submit-buttons" (click)="groupSettingsFunc(); groupSettings.hide();" style="float:right;">Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>

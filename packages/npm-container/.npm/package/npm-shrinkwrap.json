@@ -1,0 +1,64 @@
+{
+  "dependencies": {
+    "asn1": {
+      "version": "0.2.3",
+      "resolved": "https://registry.npmjs.org/asn1/-/asn1-0.2.3.tgz",
+      "from": "asn1@>=0.2.0 <0.3.0"
+    },
+    "debug": {
+      "version": "2.2.0",
+      "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz",
+      "from": "debug@2.2.0"
+    },
+    "jstz": {
+      "version": "1.0.7",
+      "resolved": "https://registry.npmjs.org/jstz/-/jstz-1.0.7.tgz",
+      "from": "jstz@1.0.7"
+    },
+    "lodash.defaults": {
+      "version": "4.2.0",
+      "resolved": "https://registry.npmjs.org/lodash.defaults/-/lodash.defaults-4.2.0.tgz",
+      "from": "lodash.defaults@>=4.1.0 <5.0.0"
+    },
+    "moment": {
+      "version": "2.12.0",
+      "resolved": "https://registry.npmjs.org/moment/-/moment-2.12.0.tgz",
+      "from": "moment@2.12.0"
+    },
+    "moment-timezone": {
+      "version": "0.5.1",
+      "resolved": "https://registry.npmjs.org/moment-timezone/-/moment-timezone-0.5.1.tgz",
+      "from": "moment-timezone@0.5.1"
+    },
+    "ms": {
+      "version": "0.7.1",
+      "resolved": "https://registry.npmjs.org/ms/-/ms-0.7.1.tgz",
+      "from": "ms@0.7.1"
+    },
+    "semver": {
+      "version": "5.3.0",
+      "resolved": "https://registry.npmjs.org/semver/-/semver-5.3.0.tgz",
+      "from": "semver@>=5.1.0 <6.0.0"
+    },
+    "ssh2": {
+      "version": "0.5.4",
+      "resolved": "https://registry.npmjs.org/ssh2/-/ssh2-0.5.4.tgz",
+      "from": "ssh2@>=0.5.2 <0.6.0"
+    },
+    "ssh2-streams": {
+      "version": "0.1.16",
+      "resolved": "https://registry.npmjs.org/ssh2-streams/-/ssh2-streams-0.1.16.tgz",
+      "from": "ssh2-streams@>=0.1.15 <0.2.0"
+    },
+    "streamsearch": {
+      "version": "0.1.2",
+      "resolved": "https://registry.npmjs.org/streamsearch/-/streamsearch-0.1.2.tgz",
+      "from": "streamsearch@>=0.1.2 <0.2.0"
+    },
+    "tunnel-ssh": {
+      "version": "4.1.1",
+      "resolved": "https://registry.npmjs.org/tunnel-ssh/-/tunnel-ssh-4.1.1.tgz",
+      "from": "tunnel-ssh@4.1.1"
+    }
+  }
+}

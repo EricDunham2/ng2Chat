@@ -6,20 +6,20 @@
   <div class="background-img-fullscreen top-cell">
         <div class="trim-content-box login-box">
           <div class="header" id="login-box">Login</div> 
-          <div> 
+          <form [formGroup]="loginForm"> 
               <div class="input-group">
                 <label for="username" class="input-label" id="username-label">Username</label>
-                <input type="text" id="username" name="username" class="input-box">
+                <input type="text" formControlName="frmusername" id="username" name="username" class="input-box">
               </div>
               <div class="input-group">
                 <label for="password" class="input-label" id="password-label">Password</label>
-                <input type="text" id="password" name="password" class="input-box">
+                <input type="password" formControlName="frmpassword" id="password" name="password" class="input-box">
               </div>
               
               <div class="input-group">
-                <button type="submit" id="login" class="login-button">Login</button>
+                <button type="submit" (click)="login()" id="login" class="login-button">Login</button>
               </div>
             
-          </div>
+          </form>
         </div>   
   </div>
